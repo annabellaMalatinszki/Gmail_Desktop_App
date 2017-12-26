@@ -158,7 +158,9 @@
             <Frame x:Name="messageBrowser" Grid.Row="1"/>
         </Grid>
 
-        <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
-        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
+        <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden">
+            
+        </Grid>
+        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden"/>
     </Grid>
 </Window>
