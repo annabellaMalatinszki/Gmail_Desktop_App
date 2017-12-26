@@ -277,8 +277,28 @@
         </Grid>
 
         <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden">
-            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" LastChildFill="True">
+                <TextBlock Text="To: " DockPanel.Dock="Left" Margin="0,0,30,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="newMessageRecipient" Width="Auto" MaxHeight="25"/>
+            </DockPanel>
+            <DockPanel Grid.Row="1" LastChildFill="True">
+                <TextBlock Text="Subject: " DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="newMessageSubject" Width="Auto" MaxHeight="25"/>
+            </DockPanel>
+            <RichTextBox x:Name="newMessageBodyTextBox" Grid.Row="2" MinWidth="200"/>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="newMessageSaveButton" Content="Save draft" Width="80" Margin="5"  MaxHeight="25"/>
+                <Button x:Name="newMessageDiscardButton" Content="Discard" Width="80" Margin="5" MaxHeight="25"/>
+                <Button x:Name="newMessageSendButton" Content="Send" Width="80" Margin="5" MaxHeight="25" Background="#FF539BA6" Foreground="White"/>
+            </StackPanel>
         </Grid>
+        
         <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden"/>
     </Grid>
 </Window>
