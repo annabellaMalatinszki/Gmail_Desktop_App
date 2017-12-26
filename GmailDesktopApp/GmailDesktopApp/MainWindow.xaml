@@ -5,8 +5,338 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GmailDesktopApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="Gmail Dektop App" Height="525" Width="780"
+        FontFamily="Century Gothic">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"  Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+            <Image x:Name="logoImage" MaxWidth="65" Margin="5,5,15,5" Source="C:\Users\amala\Documents\Codecool\C#\Own Projects\Gmail_Desktop_App\GmailDesktopApp\gmail.png"/>
+            <TextBlock x:Name="gmailDCTextBlock" Text="GmailDC" Margin="5,8,15,8" VerticalAlignment="Center" FontSize="22" FontFamily="Century Gothic"/>
+        </StackPanel>
+
+        <DockPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="5" LastChildFill="True">
+            <TextBox x:Name="searchTextBox" MinWidth="390" Height="25" Width="Auto"/>
+        </DockPanel>
         
+        <Button x:Name="searchButton" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  Content="Search" Margin="5" MinWidth="70" Height="25"/>
+
+        <Button Grid.Column ="0" Grid.Row="3" Margin="5" Content="Compose" FontSize="18" Background="#FF539BA6" Foreground="White"/>
+
+        <TabControl x:Name="inboxTabControl" Grid.Column="0" Grid.Row="4" Margin="5" Grid.RowSpan="3">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Inbox"/>
+                </TabItem.Header>
+                <ListView x:Name="inboxListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Sent"/>
+                </TabItem.Header>
+                <ListView x:Name="sentListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Draft"/>
+                </TabItem.Header>
+                <ListView x:Name="draftListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Spam"/>
+                </TabItem.Header>
+                <ListView x:Name="spamListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Trash"/>
+                </TabItem.Header>
+                <ListView x:Name="trashListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+        </TabControl>
+
+        <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden"/>
+
+        <Grid x:Name="defaultGrid" Grid.Column="1" Grid.Row="5" Margin="5" Grid.ColumnSpan="2">
+            <TextBlock x:Name="noContentTextBlock" Margin="0,0,0,120" Text="Nothing to show. Please select an email." FontWeight="Bold" 
+                       FontSize="20" Foreground="#7D8B96" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Grid>
+
+        <Grid x:Name="messageGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5" Margin="5" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="4*"/>
+            </Grid.RowDefinitions>
+
+            <Grid x:Name="inboxMessageDetailsGrid" Grid.Row="0" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,5,0">
+                    <TextBlock x:Name="messageLabelTextBlock" Text="INBOX" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="From: "/>
+                        <TextBlock Text="{Binding Sender}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To: "/>
+                        <TextBlock Text="{Binding Recipient}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Subject: "/>
+                        <TextBlock Text="{Binding Subject}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Date: "/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,20,0" HorizontalAlignment="Right">
+                    <Button x:Name="inboxMessageReplyButton" Content="Reply" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="inboxMessageTrashButton" Content="Trash" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="inboxMessageSpamButton" Content="Spam" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="inboxMessageArchiveButton" Content="Archive" MaxWidth="50" MaxHeight="25"/>
+                </StackPanel>
+            </Grid>
+            
+            <Grid x:Name="sentMessageDetailsGrid" Grid.Row="0" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,5,0">
+                    <TextBlock x:Name="sentMessageLabelTextBlock" Text="SENT" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To: "/>
+                        <TextBlock Text="{Binding Recipient}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Subject: "/>
+                        <TextBlock Text="{Binding Subject}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Date: "/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,20,0" HorizontalAlignment="Right">
+                    <Button x:Name="sentMessageReplyButton" Content="Reply" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="sentMessageTrashButton" Content="Trash" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="sentMessageArchiveButton" Content="Archive" MaxWidth="50" MaxHeight="25"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="draftMessageDetailsGrid" Grid.Row="0" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,5,0">
+                    <TextBlock x:Name="draftMessageLabelTextBlock" Text="DRAFT" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To: "/>
+                        <TextBlock Text="{Binding Recipient}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Subject: "/>
+                        <TextBlock Text="{Binding Subject}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Saved: "/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,20,0" HorizontalAlignment="Right">
+                    <Button x:Name="draftMessageSendButton" Content="Send" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="draftMessageEditButton" Content="Edit" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="draftMessageTrashButton" Content="Trash" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="draftMessageArchiveButton" Content="Archive" MaxWidth="50" MaxHeight="25"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="spamMessageDetailsGrid" Grid.Row="0" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,5,0">
+                    <TextBlock x:Name="spamMessageLabelTextBlock" Text="SPAM" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="From: "/>
+                        <TextBlock Text="{Binding Sender}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To: "/>
+                        <TextBlock Text="{Binding Recipient}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Subject: "/>
+                        <TextBlock Text="{Binding Subject}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Date: "/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,20,0" HorizontalAlignment="Right">
+                    <Button x:Name="spamMessageSendButton" Content="Restore" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="spamMessageTrashButton" Content="Trash" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="spamMessageArchiveButton" Content="Archive" MaxWidth="50" MaxHeight="25"/>
+                </StackPanel>
+            </Grid>
+
+            <Grid x:Name="trashMessageDetailsGrid" Grid.Row="0" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,5,0">
+                    <TextBlock x:Name="trashMessageLabelTextBlock" Text="TRASH" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="From: "/>
+                        <TextBlock Text="{Binding Sender}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To: "/>
+                        <TextBlock Text="{Binding Recipient}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Subject: "/>
+                        <TextBlock Text="{Binding Subject}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Date: "/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,20,0" HorizontalAlignment="Right">
+                    <Button x:Name="trashMessageSendButton" Content="Restore" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="trashMessageDeleteButton" Content="Delete" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="trashMessageArchiveButton" Content="Archive" MaxWidth="50" MaxHeight="25"/>
+                </StackPanel>
+            </Grid>
+            
+            <Frame x:Name="messageBrowser" Grid.Row="1"/>
+        </Grid>
+
+        <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="8*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0" LastChildFill="True">
+                <TextBlock Text="To: " DockPanel.Dock="Left" Margin="0,0,30,0" VerticalAlignment="Center"/>
+                <TextBox x:Name="newMessageRecipient" Width="Auto" MaxHeight="25"/>
+            </DockPanel>
+            <DockPanel Grid.Row="1" LastChildFill="True">
+                <TextBlock Text="Subject: " DockPanel.Dock="Left" VerticalAlignment="Center"/>
+                <TextBox x:Name="newMessageSubject" Width="Auto" MaxHeight="25"/>
+            </DockPanel>
+            <RichTextBox x:Name="newMessageBodyTextBox" Grid.Row="2" MinWidth="200"/>
+            <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button x:Name="newMessageSaveButton" Content="Save draft" Width="80" Margin="5"  MaxHeight="25"/>
+                <Button x:Name="newMessageDiscardButton" Content="Discard" Width="80" Margin="5" MaxHeight="25"/>
+                <Button x:Name="newMessageSendButton" Content="Send" Width="80" Margin="5" MaxHeight="25" Background="#FF539BA6" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5" Margin="5" Grid.ColumnSpan="2" Visibility="Hidden">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="Search results for " FontSize="18" FontWeight="Bold" />
+                <TextBlock x:Name="searchexpressionContentTextBlock" Text="{Binding SearchExpression}" FontSize="18" FontWeight="Bold" />
+                <TextBlock Text=" :" FontSize="18" FontWeight="Bold" />
+            </StackPanel>
+            <ListView Grid.Row="1" x:Name="searchResultListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Text="{Binding Sender}"/>
+                            <TextBox Text="{Binding Subject}"/>
+                            <TextBox Text="{Binding Date}"/>
+                            <TextBox Text="{Binding Body}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid x:Name="noSearchResultGrid" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Grid.RowSpan="5" Margin="5" Visibility="Hidden">
+            <StackPanel Orientation="Vertical" Margin="0,0,0,120" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                <TextBlock x:Name="noSearchResultTextBlock" Text="No results found for" FontWeight="Bold" 
+                       FontSize="20" Foreground="#7D8B96" />
+                <TextBlock x:Name="noSearchResultContentTextBlock" Text="{Binding SearchExpression}" FontWeight="Bold" 
+                       FontSize="20" Foreground="#7D8B96" />
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
