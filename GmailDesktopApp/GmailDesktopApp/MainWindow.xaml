@@ -27,5 +27,7 @@
             <TextBox x:Name="searchTextBox" Margin="5,5,15,5" MinWidth="390" Height="25"/>
             <Button x:Name="searchButton" Content="Search" Margin="5,5,15,5" MinWidth="70" Height="25"/>
         </StackPanel>
+
+        <Button Grid.Column ="0" Grid.Row="1" Margin="5" Content="Compose" FontSize="18" Background="#FF539BA6" Foreground="White"/>
     </Grid>
 </Window>
