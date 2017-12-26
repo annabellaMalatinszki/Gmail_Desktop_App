@@ -13,27 +13,28 @@
             <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="6*"/>
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="3"  Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
             <Image x:Name="logoImage" MaxWidth="65" Margin="5,5,15,5" Source="C:\Users\amala\Documents\Codecool\C#\Own Projects\Gmail_Desktop_App\GmailDesktopApp\gmail.png"/>
             <TextBlock x:Name="gmailDCTextBlock" Text="GmailDC" Margin="5,8,15,8" VerticalAlignment="Center" FontSize="22" FontFamily="Century Gothic"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" Margin="5">
+        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Horizontal" Margin="5">
             <TextBox x:Name="searchTextBox" Margin="5,5,15,5" MinWidth="390" Height="25"/>
             <Button x:Name="searchButton" Content="Search" Margin="5,5,15,5" MinWidth="70" Height="25"/>
         </StackPanel>
 
-        <Button Grid.Column ="0" Grid.Row="1" Margin="5" Grid.RowSpan="2" Content="Compose" FontSize="18" Background="#FF539BA6" Foreground="White"/>
+        <Button Grid.Column ="0" Grid.Row="3" Margin="5" Content="Compose" FontSize="18" Background="#FF539BA6" Foreground="White"/>
 
-        <TabControl x:Name="inboxTabControl" Grid.Column="0" Grid.Row="3" Margin="5" Grid.RowSpan="3">
+        <TabControl x:Name="inboxTabControl" Grid.Column="0" Grid.Row="4" Margin="5" Grid.RowSpan="3">
             <TabItem>
                 <TabItem.Header>
                     <TextBlock Text="Inbox"/>
@@ -111,45 +112,48 @@
             </TabItem>
         </TabControl>
 
-        <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="1" Margin="5" Visibility="Hidden"/>
+        <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
 
         <Grid x:Name="defaultGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden">
             <TextBlock x:Name="noContentTextBlock" Margin="0,0,0,120" Text="Nothing to show. Please select an email." FontWeight="Bold" 
                        FontSize="20" Foreground="#7D8B96" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Grid>
 
-        <Grid x:Name="messageGrid" Grid.Column="1" Grid.Row="2" Grid.RowSpan="5" Margin="5" >
+        <Grid x:Name="messageGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5" Margin="5" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="4*"/>
             </Grid.RowDefinitions>
+
             <Grid x:Name="inboxMessageDetailsGrid" Grid.Row="0">
-                <StackPanel  Orientation="Horizontal">
-                    <StackPanel Orientation="Vertical">
-                        <StackPanel>
-                            <TextBlock Text="From: "/>
-                            <TextBlock Text="{Binding Sender}"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Text="To: "/>
-                            <TextBlock Text="{Binding Recipient}"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Text="Subject: "/>
-                            <TextBlock Text="{Binding Subject}"/>
-                        </StackPanel>
-                        <StackPanel>
-                            <TextBlock Text="Date: "/>
-                            <TextBlock Text="{Binding Date}"/>
-                        </StackPanel>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,5,0">
+                    <TextBlock x:Name="messageLabelTextBlock" Text="INBOX" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="From: "/>
+                        <TextBlock Text="{Binding Sender}"/>
                     </StackPanel>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock x:Name="messageLabelTextBlock" Text="INBOX"/>
-                        <Button Content="Reply" MaxWidth="50" MaxHeight="25"/>
-                        <Button Content="Delete" MaxWidth="50" MaxHeight="25"/>
-                        <Button Content="Spam" MaxWidth="50" MaxHeight="25"/>
-                        <Button Content="Archive" MaxWidth="50" MaxHeight="25"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To: "/>
+                        <TextBlock Text="{Binding Recipient}"/>
                     </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Subject: "/>
+                        <TextBlock Text="{Binding Subject}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Date: "/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,20,0" HorizontalAlignment="Right">
+                    <Button Content="Reply" MaxWidth="50" MaxHeight="25"/>
+                    <Button Content="Delete" MaxWidth="50" MaxHeight="25"/>
+                    <Button Content="Spam" MaxWidth="50" MaxHeight="25"/>
+                    <Button Content="Archive" MaxWidth="50" MaxHeight="25"/>
                 </StackPanel>
             </Grid>
             <Frame x:Name="messageBrowser" Grid.Row="1"/>
