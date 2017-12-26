@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Gmail Dektop App" Height="525" Width="780"
         FontFamily="Century Gothic">
-    <Grid>
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
             <ColumnDefinition Width="5*"/>
