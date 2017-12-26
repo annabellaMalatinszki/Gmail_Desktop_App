@@ -10,7 +10,8 @@
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -26,10 +27,11 @@
             <TextBlock x:Name="gmailDCTextBlock" Text="GmailDC" Margin="5,8,15,8" VerticalAlignment="Center" FontSize="22" FontFamily="Century Gothic"/>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Horizontal" Margin="5">
-            <TextBox x:Name="searchTextBox" Margin="5,5,15,5" MinWidth="390" Height="25"/>
-            <Button x:Name="searchButton" Content="Search" Margin="5,5,15,5" MinWidth="70" Height="25"/>
-        </StackPanel>
+        <DockPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="5" LastChildFill="True">
+            <TextBox x:Name="searchTextBox" MinWidth="390" Height="25" Width="Auto"/>
+        </DockPanel>
+        
+        <Button x:Name="searchButton" Grid.Row="0" Grid.Column="2" Grid.RowSpan="3"  Content="Search" Margin="5" MinWidth="70" Height="25"/>
 
         <Button Grid.Column ="0" Grid.Row="3" Margin="5" Content="Compose" FontSize="18" Background="#FF539BA6" Foreground="White"/>
 
@@ -116,9 +118,9 @@
             </TabItem>
         </TabControl>
 
-        <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
+        <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Margin="5" Visibility="Hidden"/>
 
-        <Grid x:Name="defaultGrid" Grid.Column="1" Grid.Row="5" Margin="5" Visibility="Hidden">
+        <Grid x:Name="defaultGrid" Grid.Column="1" Grid.Row="5" Margin="5" Grid.ColumnSpan="2" Visibility="Hidden">
             <TextBlock x:Name="noContentTextBlock" Margin="0,0,0,120" Text="Nothing to show. Please select an email." FontWeight="Bold" 
                        FontSize="20" Foreground="#7D8B96" VerticalAlignment="Center" HorizontalAlignment="Center" />
         </Grid>
@@ -281,7 +283,7 @@
             <Frame x:Name="messageBrowser" Grid.Row="1"/>
         </Grid>
 
-        <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden">
+        <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
@@ -304,7 +306,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5" Margin="5">
+        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5" Margin="5" Grid.ColumnSpan="2" Visibility="Hidden">
             <Grid.RowDefinitions>
                 <RowDefinition Height="25"/>
                 <RowDefinition Height="*"/>
