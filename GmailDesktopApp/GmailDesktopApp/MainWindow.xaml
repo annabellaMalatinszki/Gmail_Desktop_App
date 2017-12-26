@@ -110,7 +110,10 @@
 
         <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="1" Margin="5" Visibility="Hidden"/>
 
-        <Grid x:Name="defaultGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
+        <Grid x:Name="defaultGrid" Grid.Column="1" Grid.Row="2" Margin="5">
+            <TextBlock x:Name="noContentTextBlock" Margin="0,0,0,120" Text="Nothing to show. Please select an email." FontWeight="Bold" 
+                       FontSize="20" Foreground="#7D8B96" VerticalAlignment="Center" HorizontalAlignment="Center" />
+        </Grid>
         <Grid x:Name="messageGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
         <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
         <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
