@@ -44,6 +44,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Text="{Binding Sender}"/>
                                 <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -59,6 +60,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Text="{Binding Sender}"/>
                                 <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -74,6 +76,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Text="{Binding Sender}"/>
                                 <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -89,6 +92,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Text="{Binding Sender}"/>
                                 <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -104,6 +108,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <TextBox Text="{Binding Sender}"/>
                                 <TextBox Text="{Binding Subject}"/>
+                                <TextBlock Text="{Binding Date}"/>
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
@@ -298,7 +303,30 @@
                 <Button x:Name="newMessageSendButton" Content="Send" Width="80" Margin="5" MaxHeight="25" Background="#FF539BA6" Foreground="White"/>
             </StackPanel>
         </Grid>
-        
-        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5"  Margin="5" Visibility="Hidden"/>
+
+        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="3" Grid.RowSpan="5" Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Orientation="Horizontal">
+                <TextBlock Text="Search results for " FontSize="18" FontWeight="Bold" />
+                <TextBlock x:Name="searchexpressionContentTextBlock" Text="{Binding SearchExpression}" FontSize="18" FontWeight="Bold" />
+                <TextBlock Text=" :" FontSize="18" FontWeight="Bold" />
+            </StackPanel>
+            <ListView Grid.Row="1" x:Name="searchResultListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBox Text="{Binding Sender}"/>
+                            <TextBox Text="{Binding Subject}"/>
+                            <TextBox Text="{Binding Date}"/>
+                            <TextBox Text="{Binding Body}"/>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
     </Grid>
 </Window>
