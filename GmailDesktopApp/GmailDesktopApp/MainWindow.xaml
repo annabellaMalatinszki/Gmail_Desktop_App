@@ -22,5 +22,10 @@
             <Image x:Name="logoImage" MaxWidth="65" Margin="5,5,15,5" Source="C:\Users\amala\Documents\Codecool\C#\Own Projects\Gmail_Desktop_App\GmailDesktopApp\gmail.png"/>
             <TextBlock x:Name="gmailDCTextBlock" Text="GmailDC" Margin="5,8,15,8" VerticalAlignment="Center" FontSize="22" FontFamily="Century Gothic"/>
         </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" Margin="5">
+            <TextBox x:Name="searchTextBox" Margin="5,5,15,5" MinWidth="390" Height="25"/>
+            <Button x:Name="searchButton" Content="Search" Margin="5,5,15,5" MinWidth="70" Height="25"/>
+        </StackPanel>
     </Grid>
 </Window>
