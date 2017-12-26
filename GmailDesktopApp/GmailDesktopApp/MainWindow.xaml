@@ -107,6 +107,8 @@
                 </ListView>
             </TabItem>
         </TabControl>
-        
+
+        <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="1" Margin="5" Visibility="Hidden"/>
+
     </Grid>
 </Window>
