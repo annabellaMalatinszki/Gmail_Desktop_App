@@ -110,5 +110,9 @@
 
         <TextBlock x:Name="notificationTextBlock" Grid.Column="1" Grid.Row="1" Margin="5" Visibility="Hidden"/>
 
+        <Grid x:Name="defaultGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
+        <Grid x:Name="messageGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
+        <Grid x:Name="newMessageGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
+        <Grid x:Name="searchResultGrid" Grid.Column="1" Grid.Row="2" Margin="5" Visibility="Hidden"/>
     </Grid>
 </Window>
