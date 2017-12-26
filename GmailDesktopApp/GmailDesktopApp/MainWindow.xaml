@@ -241,6 +241,38 @@
                     <Button x:Name="spamMessageArchiveButton" Content="Archive" MaxWidth="50" MaxHeight="25"/>
                 </StackPanel>
             </Grid>
+
+            <Grid x:Name="trashMessageDetailsGrid" Grid.Row="0" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Orientation="Vertical" Margin="10,0,5,0">
+                    <TextBlock x:Name="trashMessageLabelTextBlock" Text="TRASH" FontWeight="Bold"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="From: "/>
+                        <TextBlock Text="{Binding Sender}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="To: "/>
+                        <TextBlock Text="{Binding Recipient}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Subject: "/>
+                        <TextBlock Text="{Binding Subject}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Date: "/>
+                        <TextBlock Text="{Binding Date}"/>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5,0,20,0" HorizontalAlignment="Right">
+                    <Button x:Name="trashMessageSendButton" Content="Restore" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="trashMessageDeleteButton" Content="Delete" MaxWidth="50" MaxHeight="25"/>
+                    <Button x:Name="trashMessageArchiveButton" Content="Archive" MaxWidth="50" MaxHeight="25"/>
+                </StackPanel>
+            </Grid>
+            
             <Frame x:Name="messageBrowser" Grid.Row="1"/>
         </Grid>
 
