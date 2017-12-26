@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GmailDesktopApp"
         mc:Ignorable="d"
-        Title="Gmail Dektop App" Height="525" Width="780">
+        Title="Gmail Dektop App" Height="525" Width="780"
+        FontFamily="Century Gothic">
     <Grid>
         
     </Grid>
