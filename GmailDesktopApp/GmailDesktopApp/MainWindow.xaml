@@ -29,5 +29,84 @@
         </StackPanel>
 
         <Button Grid.Column ="0" Grid.Row="1" Margin="5" Content="Compose" FontSize="18" Background="#FF539BA6" Foreground="White"/>
+
+        <TabControl x:Name="inboxTabControl" Grid.Column="0" Grid.Row="2" Margin="5">
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Inbox"/>
+                </TabItem.Header>
+                <ListView x:Name="inboxListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Sent"/>
+                </TabItem.Header>
+                <ListView x:Name="sentListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Draft"/>
+                </TabItem.Header>
+                <ListView x:Name="draftListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Spam"/>
+                </TabItem.Header>
+                <ListView x:Name="spamListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem>
+                <TabItem.Header>
+                    <TextBlock Text="Trash"/>
+                </TabItem.Header>
+                <ListView x:Name="trashListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBox Text="{Binding Sender}"/>
+                                <TextBox Text="{Binding Subject}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+        </TabControl>
+        
     </Grid>
 </Window>
