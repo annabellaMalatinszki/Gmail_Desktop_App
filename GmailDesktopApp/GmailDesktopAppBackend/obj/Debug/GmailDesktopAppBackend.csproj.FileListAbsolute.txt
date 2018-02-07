@@ -1,0 +1,2 @@
+C:\Users\amala\Documents\Codecool\C#\Own Projects\Gmail_Desktop_App\GmailDesktopApp\GmailDesktopAppBackend\obj\Debug\GmailDesktopAppBackend.csprojResolveAssemblyReference.cache
+C:\Users\amala\Documents\Codecool\C#\Own Projects\Gmail_Desktop_App\GmailDesktopApp\GmailDesktopAppBackend\obj\Debug\GmailDesktopAppBackend.csproj.CoreCompileInputs.cache
